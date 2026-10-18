@@ -6,10 +6,12 @@
   <title>Tech Repair Berlin | iPhone Express & Smartphone Lab</title>
   <style>
     :root {
-      --bg-dark: #070b12;
-      --bg-card: rgba(16, 23, 38, 0.85);
+      --bg-dark: #060d18;
+      --bg-hero: #040c16;
+      --bg-card: rgba(15, 23, 42, 0.88);
+      --bg-soft: rgba(17, 25, 39, 0.75);
       --accent: #00f2fe;
-      --accent-2: #4facfe; 
+      --accent-2: #4facfe;
       --android-accent: #a855f7;
       --success: #10b981;
       --warning: #f59e0b;
@@ -26,13 +28,12 @@
       --accent-2: #34d399;
       --border: rgba(16, 185, 129, 0.35);
       --xray-glow: 0 0 22px rgba(16, 185, 129, 0.15);
-      background-image: 
+      background-image:
         linear-gradient(rgba(16, 185, 129, 0.05) 1px, transparent 1px),
         linear-gradient(90deg, rgba(16, 185, 129, 0.05) 1px, transparent 1px);
       background-size: 24px 24px;
     }
 
-    /* BLOQUEO TOTAL DE SELECCIÓN Y COPIA */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -45,28 +46,43 @@
       -webkit-touch-callout: none !important;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      background-color: var(--bg-dark);
+      background: radial-gradient(circle at top, #0a1324 0%, #070d17 30%, #040b12 100%);
       color: var(--text-main);
       line-height: 1.6;
       overflow-x: hidden;
       transition: background-color 0.4s ease;
+      min-height: 100vh;
+      padding: 14px;
     }
 
-    /* Navbar */
+    .browser-shell {
+      width: min(100%, 1500px);
+      margin: 0 auto;
+      background: rgba(5, 10, 18, 0.96);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.42);
+    }
+
+    /* Nav de navegador */
     header {
       position: sticky;
       top: 0;
       z-index: 100;
-      backdrop-filter: blur(16px);
-      background: rgba(7, 11, 18, 0.88);
-      border-bottom: 1px solid var(--border);
-      padding: 0.9rem 5%;
+      background: #0d1520;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+      padding: 0.7rem 1rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
       gap: 1rem;
+      flex-wrap: wrap;
     }
 
     .brand {
@@ -75,6 +91,7 @@
       gap: 0.75rem;
       font-size: 1.25rem;
       font-weight: 800;
+      letter-spacing: 0.02em;
     }
 
     .brand span {
@@ -92,7 +109,7 @@
       border: 1px solid rgba(16, 185, 129, 0.3);
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.5rem;
     }
 
     .status-dot {
@@ -112,58 +129,67 @@
       display: flex;
       align-items: center;
       gap: 0.6rem;
+      margin-left: auto;
     }
 
     .btn-toggle {
-      background: var(--bg-card);
+      background: rgba(15, 23, 42, 0.8);
       color: var(--text-main);
       border: 1px solid var(--border);
       padding: 0.45rem 0.85rem;
-      border-radius: 8px;
+      border-radius: 10px;
       cursor: pointer;
       font-size: 0.85rem;
-      font-weight: 600;
+      font-weight: 700;
       transition: all 0.2s;
     }
 
     .btn-toggle:hover, .btn-toggle.active {
       border-color: var(--accent);
       box-shadow: 0 0 12px rgba(0, 242, 254, 0.25);
+      background: rgba(12, 32, 42, 0.9);
     }
 
     /* Hero */
     .hero {
-      max-width: 1200px;
+      max-width: 1420px;
       margin: 0 auto;
-      padding: 3.5rem 5% 2.5rem;
+      padding: 3.1rem 4% 2.5rem;
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 3rem;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 2.2rem;
       align-items: center;
+      min-height: 700px;
+      background: linear-gradient(180deg, rgba(4, 12, 20, 0.98), rgba(5, 9, 16, 0.98));
     }
 
     .badge-express {
       display: inline-block;
       background: rgba(0, 242, 254, 0.12);
       color: var(--accent);
-      border: 1px solid rgba(0, 242, 254, 0.3);
+      border: 1px solid rgba(0, 242, 254, 0.4);
       padding: 0.35rem 0.9rem;
       border-radius: 999px;
       font-size: 0.82rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
+      font-weight: 800;
+      margin-bottom: 1.1rem;
+      box-shadow: 0 0 0 1px rgba(0, 242, 254, 0.05);
     }
 
     .hero h1 {
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      line-height: 1.15;
-      margin-bottom: 1.1rem;
+      font-size: clamp(2.5rem, 4vw, 5rem);
+      line-height: 0.96;
+      margin-bottom: 1.2rem;
+      letter-spacing: -0.04em;
+      max-width: 620px;
     }
 
     .hero p {
       color: var(--text-muted);
-      font-size: 1.08rem;
-      margin-bottom: 1.8rem;
+      font-size: 1.15rem;
+      margin-bottom: 1.6rem;
+      max-width: 700px;
+      line-height: 1.5;
     }
 
     .xray-telemetry {
@@ -182,17 +208,45 @@
       display: block;
     }
 
-    /* Escáner Móvil Interactivo */
+    .btn-whatsapp {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.6rem;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      color: #07131b;
+      font-weight: 800;
+      text-decoration: none;
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-align: center;
+      cursor: pointer;
+      border: 1px solid rgba(0, 242, 254, 0.6);
+      box-shadow: 0 8px 25px rgba(0, 242, 254, 0.18);
+      font-size: 1rem;
+    }
+
+    .btn-whatsapp:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(0, 242, 254, 0.2);
+    }
+
+    /* Showcase del móvil */
     .phone-showcase {
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
+      min-height: 530px;
     }
 
     .phone-frame {
       position: relative;
-      width: 265px;
-      height: 490px;
+      width: min(35vw, 390px);
+      height: min(62vw, 670px);
+      min-width: 260px;
+      min-height: 420px;
       border-radius: 38px;
       border: 6px solid #2d3748;
       background: #0f172a;
@@ -205,7 +259,7 @@
       top: 12px;
       left: 50%;
       transform: translateX(-50%);
-      width: 88px;
+      width: 90px;
       height: 22px;
       background: #000;
       border-radius: 20px;
@@ -224,7 +278,7 @@
     }
 
     .screen-after {
-      background: radial-gradient(circle at top, #0f3d3e, #090d16 75%);
+      background: radial-gradient(circle at top, rgba(21, 94, 117, 0.95), rgba(7, 10, 16, 0.98) 70%);
     }
 
     .screen-before {
@@ -255,13 +309,14 @@
     }
 
     .slider-control {
-      width: 265px;
-      margin-top: 1rem;
+      width: min(35vw, 390px);
+      min-width: 260px;
+      margin-top: 1.2rem;
       accent-color: var(--accent);
       cursor: ew-resize;
     }
 
-    /* Secciones Principales */
+    /* Resto de la página */
     .section-container {
       max-width: 1200px;
       margin: 0 auto;
@@ -280,7 +335,6 @@
       margin-bottom: 2.2rem;
     }
 
-    /* Grid Calculadora iPhone */
     .calculator-grid {
       display: grid;
       grid-template-columns: 1.3fr 0.7fr;
@@ -371,28 +425,6 @@
       padding-bottom: 0.35rem;
     }
 
-    .btn-whatsapp {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      gap: 0.6rem;
-      background: #10b981;
-      color: #03221c;
-      font-weight: 800;
-      text-decoration: none;
-      padding: 0.95rem 1.2rem;
-      border-radius: 12px;
-      transition: transform 0.2s, box-shadow 0.2s;
-      text-align: center;
-      cursor: pointer;
-    }
-
-    .btn-whatsapp:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px -5px rgba(16, 185, 129, 0.45);
-    }
-
-    /* SECCIÓN SAMSUNG / XIAOMI / REDMI CON RESERVA Y RECOGIDA */
     .android-vip-card {
       background: linear-gradient(135deg, rgba(28, 17, 48, 0.85) 0%, rgba(15, 23, 42, 0.9) 100%);
       border: 1px solid rgba(168, 85, 247, 0.35);
@@ -432,7 +464,6 @@
       background: rgba(168, 85, 247, 0.2);
     }
 
-    /* Toast Anti-Copia */
     #securityToast {
       position: fixed;
       bottom: 24px;
@@ -469,263 +500,251 @@
       .hero {
         text-align: center;
         padding-top: 2rem;
+        min-height: auto;
+      }
+      .hero h1, .hero p {
+        max-width: 100%;
+      }
+      .brand {
+        font-size: 1rem;
+      }
+      .nav-controls {
+        width: 100%;
+        justify-content: flex-end;
       }
     }
   </style>
 </head>
 <body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
+  <div class="browser-shell">
+    <div id="securityToast">🛡️ Tech Repair Berlin · Contenido Protegido</div>
 
-  <!-- Notificación flotante cuando intentan hacer clic derecho o doble clic -->
-  <div id="securityToast">🛡️ Tech Repair Berlin · Contenido Protegido</div>
-
-  <header>
-    <div class="brand">
-      🔧 <span>TECH REPAIR BERLIN</span>
-      <div class="status-pill">
-        <span class="status-dot"></span>
-        <span id="statusText">iPhone Express Lab</span>
-      </div>
-    </div>
-
-    <div class="nav-controls">
-      <button class="btn-toggle" id="xrayBtn" onclick="toggleXray()">🔬 Modo Rayos X</button>
-      <button class="btn-toggle active" id="langDE" onclick="setLang('de')">🇩🇪 DE</button>
-      <button class="btn-toggle" id="langES" onclick="setLang('es')">🇪🇸 ES</button>
-    </div>
-  </header>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div>
-      <div class="xray-telemetry">
-        [PROTECTION: ACTIVE] [PSU: 4.20V] [HOT AIR: 380°C] [IPHONE EXPRESS STOCK: 100%]
-      </div>
-      <span class="badge-express"
-            data-de="⚡ iPhone Sofort-Reparatur in 30–45 Minuten"
-            data-es="⚡ Reparación iPhone al Instante en 30–45 Minutos">
-        ⚡ iPhone Sofort-Reparatur in 30–45 Minuten
-      </span>
-      <h1 data-de="Dein iPhone heute noch wie neu – direkt vor Ort in Berlin"
-          data-es="Tu iPhone como nuevo en el acto – Laboratorio en Berlín">
-        Dein iPhone heute noch wie neu – direkt vor Ort in Berlin
-      </h1>
-      <p data-de="Sofort-Displaytausch, neue Akkus mit 100% Kapazität und Level-3 Mikrolöten für alle iPhone-Modelle. Für Samsung, Xiaomi & Redmi bieten wir unseren exklusiven Abhol- & Bestellservice."
-         data-es="Cambio de pantalla en el acto, baterías al 100% y micro-soldadura para todos los modelos de iPhone. ¿Tienes Samsung, Xiaomi o Redmi? Te lo recogemos y reservamos tu pieza a medida.">
-        Sofort-Displaytausch, neue Akkus mit 100% Kapazität und Level-3 Mikrolöten für alle iPhone-Modelle. Für Samsung, Xiaomi & Redmi bieten wir unseren exklusiven Abhol- & Bestellservice.
-      </p>
-      <a href="#iphone-calc" class="btn-whatsapp" style="background: linear-gradient(90deg, var(--accent), var(--accent-2)); color: #050811;"
-         data-de="📱 iPhone Sofort-Preis sehen"
-         data-es="📱 Ver Precio iPhone al Instante">
-        📱 iPhone Sofort-Preis sehen
-      </a>
-    </div>
-
-    <div class="phone-showcase">
-      <div class="phone-frame">
-        <div class="notch"></div>
-        <div class="screen-layer screen-after">
-          <div style="font-size: 2.8rem; margin-bottom: 0.5rem;">🍏 100%</div>
-          <h3 style="color: #34d399; margin-bottom: 0.4rem;">iPhone Express OK</h3>
-          <p style="font-size: 0.85rem; color: #cbd5e1;"
-             data-de="TrueTone programmiert, wasserdichte Verklebung & volle Garantie."
-             data-es="TrueTone programado, sellado nuevo contra polvo/agua y garantía total.">
-            TrueTone programmiert, wasserdichte Verklebung & volle Garantie.
-          </p>
+    <header>
+      <div class="brand">
+        🔧 <span>TECH REPAIR BERLIN</span>
+        <div class="status-pill">
+          <span class="status-dot"></span>
+          <span id="statusText">iPhone Express Lab</span>
         </div>
-        <div class="screen-layer screen-before" id="brokenLayer">
-          <svg class="crack-svg" viewBox="0 0 265 490">
-            <path d="M0,70 L115,195 L265,130 M115,195 L55,380 L0,440 M115,195 L205,330 L265,420 M115,195 L140,0" />
-          </svg>
-          <div style="font-size: 2.6rem; margin-bottom: 0.5rem;">💥</div>
-          <h3 style="color: #f87171; margin-bottom: 0.4rem;">DISPLAY CRACKED</h3>
-          <p style="font-size: 0.85rem; color: #94a3b8;"
-             data-de="Schiebe den Regler, um das iPhone live zu reparieren."
-             data-es="Desliza la barra inferior para reparar el iPhone en vivo.">
-            Schiebe den Regler, um das iPhone live zu reparieren.
-          </p>
-        </div>
-        <div class="slider-line" id="sliderLine"></div>
       </div>
-      <input type="range" min="5" max="95" value="50" class="slider-control" oninput="moveSlider(this.value)" />
-    </div>
-  </section>
 
-  <!-- SECCIÓN 1: CALCULADORA EXCLUSIVA DE IPHONE (CON preciosDelModelo) -->
-  <section class="section-container" id="iphone-calc">
-    <h2 class="section-title"
-        data-de="🍏 iPhone Express-Kalkulator (Sofort-Reparatur)"
-        data-es="🍏 Calculadora iPhone Express (Reparación al Instante)">
-      🍏 iPhone Express-Kalkulator (Sofort-Reparatur)
-    </h2>
-    <p class="section-subtitle"
-       data-de="Alle iPhone-Ersatzteile auf Lager – komm vorbei oder buche deinen Express-Slot."
-       data-es="Piezas de iPhone en stock para reparación inmediata en 30–45 minutos.">
-      Alle iPhone-Ersatzteile auf Lager – komm vorbei oder buche deinen Express-Slot.
-    </p>
+      <div class="nav-controls">
+        <button class="btn-toggle" id="xrayBtn" onclick="toggleXray()">🔬 Modo Rayos X</button>
+        <button class="btn-toggle active" id="langDE" onclick="setLang('de')">🇩🇪 DE</button>
+        <button class="btn-toggle" id="langES" onclick="setLang('es')">🇪🇸 ES</button>
+      </div>
+    </header>
 
-    <div class="calculator-grid">
+    <section class="hero">
       <div>
-        <!-- Selección de Modelo iPhone -->
-        <div class="form-group">
-          <label data-de="1. Dein iPhone Modell wählen" data-es="1. Elige tu modelo de iPhone">1. Dein iPhone Modell wählen</label>
-          <select id="iphoneModelSelect" onchange="calcularPrecioIphone()"></select>
+        <div class="xray-telemetry">
+          [PROTECTION: ACTIVE] [PSU: 4.20V] [HOT AIR: 380°C] [IPHONE EXPRESS STOCK: 100%]
         </div>
-
-        <!-- Tipo de Avería -->
-        <div class="form-group">
-          <label data-de="2. Was soll repariert werden?" data-es="2. ¿Qué avería tiene tu iPhone?">2. Was soll repariert werden?</label>
-          <div class="pill-group" id="issueGroup">
-            <button class="pill-btn active" onclick="setIssue('pantalla', this)"
-                    data-de="📱 Display" data-es="📱 Pantalla">📱 Display</button>
-            <button class="pill-btn" onclick="setIssue('bateria', this)"
-                    data-de="🔋 Akku" data-es="🔋 Batería">🔋 Akku</button>
-            <button class="pill-btn" onclick="setIssue('carga', this)"
-                    data-de="⚡ Ladebuchse" data-es="⚡ Conector Carga">⚡ Ladebuchse</button>
-            <button class="pill-btn" onclick="setIssue('trasera', this)"
-                    data-de="✨ Rückglas" data-es="✨ Tapa Trasera">✨ Rückglas</button>
-            <button class="pill-btn" onclick="setIssue('placa', this)"
-                    data-de="🔬 Platinen-Reparatur" data-es="🔬 Placa Base">🔬 Platinen-Reparatur</button>
-          </div>
-        </div>
-
-        <!-- Calidad del Repuesto (solo aplica a pantalla) -->
-        <div class="form-group" id="qualityBox">
-          <label data-de="3. Display-Qualität" data-es="3. Calidad de Pantalla">3. Display-Qualität</label>
-          <div class="pill-group">
-            <button class="pill-btn active" id="btnQualStd" onclick="setQuality('estandar', this)"
-                    data-de="✨ Incell / OLED Premium" data-es="✨ Compatible Premium">✨ Incell / OLED Premium</button>
-            <button class="pill-btn" id="btnQualOem" onclick="setQuality('original', this)"
-                    data-de="🏆 Original / OEM Refurb" data-es="🏆 Calidad Original OEM">🏆 Original / OEM Refurb</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Resultado iPhone -->
-      <div class="quote-result">
-        <div>
-          <span style="font-size: 0.82rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;"
-                data-de="Festpreis inkl. Einbau" data-es="Precio Cerrado con Mano de Obra">
-            Festpreis inkl. Einbau
-          </span>
-          <div class="price-tag" id="iphonePriceDisplay">99 €</div>
-
-          <ul class="meta-list">
-            <li>
-              <span data-de="⚡ Verfügbarkeit:" data-es="⚡ Disponibilidad:">⚡ Verfügbarkeit:</span>
-              <strong style="color: var(--accent);" data-de="Sofort (Auf Lager)" data-es="Al instante (En Stock)">Sofort (Auf Lager)</strong>
-            </li>
-            <li>
-              <span data-de="⏱️ Reparaturdauer:" data-es="⏱️ Tiempo en taller:">⏱️ Reparaturdauer:</span>
-              <strong id="iphoneTimeDisplay" style="color: var(--text-main);">35 - 45 Min.</strong>
-            </li>
-            <li>
-              <span data-de="🛡️ Garantie:" data-es="🛡️ Garantía:">🛡️ Garantie:</span>
-              <strong style="color: var(--success);">6 Monate / Meses</strong>
-            </li>
-          </ul>
-        </div>
-
-        <a id="waIphoneLink" href="#" target="_blank" class="btn-whatsapp">
-          💬 <span data-de="iPhone Express-Termin per WhatsApp" data-es="Reservar Reparación al Instante">iPhone Express-Termin per WhatsApp</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECCIÓN 2: SAMSUNG, XIAOMI, REDMI & OTROS (BAJO RESERVA + RECOGIDA VIP) -->
-  <section class="section-container">
-    <div class="android-vip-card">
-      <div>
-        <span class="badge-express" style="background: rgba(168, 85, 247, 0.18); color: #d8b4fe; border-color: rgba(168, 85, 247, 0.4);"
-              data-de="🚗 Hol- & Bringservice + Teile-Reservierung"
-              data-es="🚗 Recogida VIP + Reserva de Pieza a Medida">
-          🚗 Hol- & Bringservice + Teile-Reservierung
+        <span class="badge-express"
+              data-de="⚡ iPhone Sofort-Reparatur in 30–45 Minuten"
+              data-es="⚡ Reparación iPhone al Instante en 30–45 Minutos">
+          ⚡ iPhone Sofort-Reparatur in 30–45 Minuten
         </span>
-        <h2 style="font-size: 1.85rem; margin-bottom: 0.7rem;"
-            data-de="Samsung, Xiaomi, Redmi oder Laptop defekt?"
-            data-es="¿Tienes un Samsung, Xiaomi, Redmi o Portátil?">
-          Samsung, Xiaomi, Redmi oder Laptop defekt?
-        </h2>
-        <p style="color: var(--text-muted); font-size: 0.98rem;"
-           data-de="Da es bei Samsung, Xiaomi und Redmi hunderte verschiedene Display-Versionen und Rahmenfarben gibt, arbeiten wir hier mit unserem smarten Reservierungs- & Abholsystem:"
-           data-es="Como en Samsung, Xiaomi y Redmi existen cientos de variantes y colores de pantalla, no te hacemos perder tiempo esperando: trabajamos bajo reserva expresa o recogida a domicilio.">
-          Da es bei Samsung, Xiaomi und Redmi hunderte verschiedene Display-Versionen und Rahmenfarben gibt, arbeiten wir hier mit unserem smarten Reservierungs- & Abholsystem:
+        <h1 data-de="Dein iPhone heute noch wie neu – direkt vor Ort in Berlin"
+            data-es="Tu iPhone como nuevo en el acto – Laboratorio en Berlín">
+          Dein iPhone heute noch wie neu – direkt vor Ort in Berlin
+        </h1>
+        <p data-de="Sofort-Displaytausch, neue Akkus mit 100% Kapazität und Level-3 Mikrolöten für alle iPhone-Modelle. Für Samsung, Xiaomi & Redmi bieten wir unseren exklusiven Abhol- & Bestellservice."
+           data-es="Cambio de pantalla en el acto, baterías al 100% y micro-soldadura para todos los modelos de iPhone. ¿Tienes Samsung, Xiaomi o Redmi? Te lo recogemos y reservamos tu pieza a medida.">
+          Sofort-Displaytausch, neue Akkus mit 100% Kapazität und Level-3 Mikrolöten für alle iPhone-Modelle. Für Samsung, Xiaomi & Redmi bieten wir unseren exklusiven Abhol- & Bestellservice.
         </p>
-
-        <div class="vip-steps">
-          <div class="vip-step">
-            <span style="font-size: 1.5rem;">1️⃣</span>
-            <div>
-              <strong data-de="Modell anfragen & Teil reservieren" data-es="Consultas y reservamos tu pieza exacta">Modell anfragen & Teil reservieren</strong>
-              <div style="font-size: 0.85rem; color: var(--text-muted);"
-                   data-de="Wir prüfen den Tagespreis und bestellen dein Original-Ersatzteil vor."
-                   data-es="Te damos presupuesto exacto al momento y apartamos el repuesto original.">
-                Wir prüfen den Tagespreis und bestellen dein Original-Ersatzteil vor.
-              </div>
-            </div>
-          </div>
-          <div class="vip-step">
-            <span style="font-size: 1.5rem;">2️⃣</span>
-            <div>
-              <strong data-de="Abholung oder Express-Termin ohne Wartezeit" data-es="Recogemos tu móvil o vienes con cita rápida">Abholung oder Express-Termin ohne Wartezeit</strong>
-              <div style="font-size: 0.85rem; color: var(--text-muted);"
-                   data-de="Du gibst dein Handy erst ab, wenn das Ersatzteil bereitliegt – oder wir holen es ab!"
-                   data-es="No te quedas días sin móvil: lo recogemos o lo traes solo cuando la pieza ya está en la mesa.">
-                Du gibst dein Handy erst ab, wenn das Ersatzteil bereitliegt – oder wir holen es ab!
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Formulario Rápido de Consulta Android / Otros -->
-      <div class="android-selector-box">
-        <h3 style="margin-bottom: 1rem; font-size: 1.2rem;"
-            data-de="Unverbindliche Preisanfrage & Reservierung"
-            data-es="Consultar Precio y Reserva (Sin Compromiso)">
-          Unverbindliche Preisanfrage & Reservierung
-        </h3>
-
-        <div class="form-group">
-          <label data-de="Marke wählen" data-es="Selecciona la Marca">Marke wählen</label>
-          <div class="pill-group" id="brandGroup">
-            <button class="pill-btn android-pill active" onclick="setBrand('Samsung Galaxy', this)">🌌 Samsung</button>
-            <button class="pill-btn android-pill" onclick="setBrand('Xiaomi', this)">🧡 Xiaomi</button>
-            <button class="pill-btn android-pill" onclick="setBrand('Redmi / POCO', this)">⚡ Redmi</button>
-            <button class="pill-btn android-pill" onclick="setBrand('Laptop / Otro', this)">💻 Otro / PC</button>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label data-de="Gewünschter Service-Modus" data-es="Modalidad que prefieres">Gewünschter Service-Modus</label>
-          <select id="pickupMode" onchange="updateAndroidWhatsApp()">
-            <option value="Abholservice (Pick-up in Berlin)" data-de="🚗 Abholservice (Handy abholen & bringen)" data-es="🚗 Recogida a domicilio en Berlín (Pick-up)">🚗 Abholservice (Handy abholen & bringen)</option>
-            <option value="Termin mit Teile-Reservierung" data-de="📅 Termin buchen (Ersatzteil vorab reservieren)" data-es="📅 Reservar pieza y traerlo con cita">📅 Termin buchen (Ersatzteil vorab reservieren)</option>
-          </select>
-        </div>
-
-        <div style="background: rgba(168, 85, 247, 0.12); border: 1px dashed rgba(168, 85, 247, 0.4); padding: 0.9rem; border-radius: 10px; margin-bottom: 1.2rem; text-align: center;">
-          <span style="font-size: 0.82rem; color: #d8b4fe; display: block;"
-                data-de="PREIS & VERFÜGBARKEIT" data-es="PRECIO Y DISPONIBILIDAD">PREIS & VERFÜGBARKEIT</span>
-          <strong style="font-size: 1.35rem; color: #fff;"
-                  data-de="Auf Anfrage (Tagesaktuell)" data-es="A Consultar (Presupuesto Directo)">Auf Anfrage (Tagesaktuell)</strong>
-        </div>
-
-        <a id="waAndroidLink" href="#" target="_blank" class="btn-whatsapp" style="width: 100%; background: linear-gradient(90deg, #a855f7, #ec4899); color: #fff;">
-          📲 <span data-de="Preis & Reservierung per WhatsApp anfragen" data-es="Consultar Precio y Reserva por WhatsApp">Preis & Reservierung per WhatsApp anfragen</span>
+        <a href="#iphone-calc" class="btn-whatsapp"
+           data-de="📱 iPhone Sofort-Preis sehen"
+           data-es="📱 Ver Precio iPhone al Instante">
+          📱 iPhone Sofort-Preis sehen
         </a>
       </div>
-    </div>
-  </section>
 
-  <footer>
-    <p>© 2026 <strong>Tech Repair Berlin</strong> · iPhone Express Lab & Smartphone Service · Berlin</p>
-  </footer>
+      <div class="phone-showcase">
+        <div class="phone-frame">
+          <div class="notch"></div>
+          <div class="screen-layer screen-after">
+            <div style="font-size: 2.8rem; margin-bottom: 0.5rem;">🍏 100%</div>
+            <h3 style="color: #34d399; margin-bottom: 0.4rem;">iPhone Express OK</h3>
+            <p style="font-size: 0.85rem; color: #cbd5e1;"
+               data-de="TrueTone programmiert, wasserdichte Verklebung & volle Garantie."
+               data-es="TrueTone programado, sellado nuevo contra polvo/agua y garantía total.">
+              TrueTone programmiert, wasserdichte Verklebung & volle Garantie.
+            </p>
+          </div>
+          <div class="screen-layer screen-before" id="brokenLayer">
+            <svg class="crack-svg" viewBox="0 0 265 490">
+              <path d="M0,70 L115,195 L265,130 M115,195 L55,380 L0,440 M115,195 L205,330 L265,420 M115,195 L140,0" />
+            </svg>
+            <div style="font-size: 2.6rem; margin-bottom: 0.5rem;">💥</div>
+            <h3 style="color: #f87171; margin-bottom: 0.4rem;">DISPLAY CRACKED</h3>
+            <p style="font-size: 0.85rem; color: #94a3b8;"
+               data-de="Schiebe den Regler, um das iPhone live zu reparieren."
+               data-es="Desliza la barra inferior para reparar el iPhone en vivo.">
+              Schiebe den Regler, um das iPhone live zu reparieren.
+            </p>
+          </div>
+          <div class="slider-line" id="sliderLine"></div>
+        </div>
+        <input type="range" min="5" max="95" value="50" class="slider-control" oninput="moveSlider(this.value)" />
+      </div>
+    </section>
+
+    <section class="section-container" id="iphone-calc">
+      <h2 class="section-title"
+          data-de="🍏 iPhone Express-Kalkulator (Sofort-Reparatur)"
+          data-es="🍏 Calculadora iPhone Express (Reparación al Instante)">
+        🍏 iPhone Express-Kalkulator (Sofort-Reparatur)
+      </h2>
+      <p class="section-subtitle"
+         data-de="Alle iPhone-Ersatzteile auf Lager – komm vorbei oder buche deinen Express-Slot."
+         data-es="Piezas de iPhone en stock para reparación inmediata en 30–45 minutos.">
+        Alle iPhone-Ersatzteile auf Lager – komm vorbei oder buche deinen Express-Slot.
+      </p>
+
+      <div class="calculator-grid">
+        <div>
+          <div class="form-group">
+            <label data-de="1. Dein iPhone Modell wählen" data-es="1. Elige tu modelo de iPhone">1. Dein iPhone Modell wählen</label>
+            <select id="iphoneModelSelect" onchange="calcularPrecioIphone()"></select>
+          </div>
+
+          <div class="form-group">
+            <label data-de="2. Was soll repariert werden?" data-es="2. ¿Qué avería tiene tu iPhone?">2. Was soll repariert werden?</label>
+            <div class="pill-group" id="issueGroup">
+              <button class="pill-btn active" onclick="setIssue('pantalla', this)" data-de="📱 Display" data-es="📱 Pantalla">📱 Display</button>
+              <button class="pill-btn" onclick="setIssue('bateria', this)" data-de="🔋 Akku" data-es="🔋 Batería">🔋 Akku</button>
+              <button class="pill-btn" onclick="setIssue('carga', this)" data-de="⚡ Ladebuchse" data-es="⚡ Conector Carga">⚡ Ladebuchse</button>
+              <button class="pill-btn" onclick="setIssue('trasera', this)" data-de="✨ Rückglas" data-es="✨ Tapa Trasera">✨ Rückglas</button>
+              <button class="pill-btn" onclick="setIssue('placa', this)" data-de="🔬 Platinen-Reparatur" data-es="🔬 Placa Base">🔬 Platinen-Reparatur</button>
+            </div>
+          </div>
+
+          <div class="form-group" id="qualityBox">
+            <label data-de="3. Display-Qualität" data-es="3. Calidad de Pantalla">3. Display-Qualität</label>
+            <div class="pill-group">
+              <button class="pill-btn active" id="btnQualStd" onclick="setQuality('estandar', this)" data-de="✨ Incell / OLED Premium" data-es="✨ Compatible Premium">✨ Incell / OLED Premium</button>
+              <button class="pill-btn" id="btnQualOem" onclick="setQuality('original', this)" data-de="🏆 Original / OEM Refurb" data-es="🏆 Calidad Original OEM">🏆 Original / OEM Refurb</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="quote-result">
+          <div>
+            <span style="font-size: 0.82rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;" data-de="Festpreis inkl. Einbau" data-es="Precio Cerrado con Mano de Obra">Festpreis inkl. Einbau</span>
+            <div class="price-tag" id="iphonePriceDisplay">99 €</div>
+
+            <ul class="meta-list">
+              <li>
+                <span data-de="⚡ Verfügbarkeit:" data-es="⚡ Disponibilidad:">⚡ Verfügbarkeit:</span>
+                <strong style="color: var(--accent);" data-de="Sofort (Auf Lager)" data-es="Al instante (En Stock)">Sofort (Auf Lager)</strong>
+              </li>
+              <li>
+                <span data-de="⏱️ Reparaturdauer:" data-es="⏱️ Tiempo en taller:">⏱️ Reparaturdauer:</span>
+                <strong id="iphoneTimeDisplay" style="color: var(--text-main);">35 - 45 Min.</strong>
+              </li>
+              <li>
+                <span data-de="🛡️ Garantie:" data-es="🛡️ Garantía:">🛡️ Garantie:</span>
+                <strong style="color: var(--success);">6 Monate / Meses</strong>
+              </li>
+            </ul>
+          </div>
+
+          <a id="waIphoneLink" href="#" target="_blank" class="btn-whatsapp">
+            💬 <span data-de="iPhone Express-Termin per WhatsApp" data-es="Reservar Reparación al Instante">iPhone Express-Termin per WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-container">
+      <div class="android-vip-card">
+        <div>
+          <span class="badge-express" style="background: rgba(168, 85, 247, 0.18); color: #d8b4fe; border-color: rgba(168, 85, 247, 0.4);"
+                data-de="🚗 Hol- & Bringservice + Teile-Reservierung"
+                data-es="🚗 Recogida VIP + Reserva de Pieza a Medida">
+            🚗 Hol- & Bringservice + Teile-Reservierung
+          </span>
+          <h2 style="font-size: 1.85rem; margin-bottom: 0.7rem;"
+              data-de="Samsung, Xiaomi, Redmi oder Laptop defekt?"
+              data-es="¿Tienes un Samsung, Xiaomi, Redmi o Portátil?">
+            Samsung, Xiaomi, Redmi oder Laptop defekt?
+          </h2>
+          <p style="color: var(--text-muted); font-size: 0.98rem;"
+             data-de="Da es bei Samsung, Xiaomi und Redmi hunderte verschiedene Display-Versionen und Rahmenfarben gibt, arbeiten wir hier mit unserem smarten Reservierungs- & Abholsystem:"
+             data-es="Como en Samsung, Xiaomi y Redmi existen cientos de variantes y colores de pantalla, no te hacemos perder tiempo esperando: trabajamos bajo reserva expresa o recogida a domicilio.">
+            Da es bei Samsung, Xiaomi und Redmi hunderte verschiedene Display-Versionen und Rahmenfarben gibt, arbeiten wir hier mit unserem smarten Reservierungs- & Abholsystem:
+          </p>
+
+          <div class="vip-steps">
+            <div class="vip-step">
+              <span style="font-size: 1.5rem;">1️⃣</span>
+              <div>
+                <strong data-de="Modell anfragen & Teil reservieren" data-es="Consultas y reservamos tu pieza exacta">Modell anfragen & Teil reservieren</strong>
+                <div style="font-size: 0.85rem; color: var(--text-muted);"
+                     data-de="Wir prüfen den Tagespreis und bestellen dein Original-Ersatzteil vor."
+                     data-es="Te damos presupuesto exacto al momento y apartamos el repuesto original.">
+                  Wir prüfen den Tagespreis und bestellen dein Original-Ersatzteil vor.
+                </div>
+              </div>
+            </div>
+            <div class="vip-step">
+              <span style="font-size: 1.5rem;">2️⃣</span>
+              <div>
+                <strong data-de="Abholung oder Express-Termin ohne Wartezeit" data-es="Recogemos tu móvil o vienes con cita rápida">Abholung oder Express-Termin ohne Wartezeit</strong>
+                <div style="font-size: 0.85rem; color: var(--text-muted);"
+                     data-de="Du gibst dein Handy erst ab, wenn das Ersatzteil bereitliegt – oder wir holen es ab!"
+                     data-es="No te quedas días sin móvil: lo recogemos o lo traes solo cuando la pieza ya está en la mesa.">
+                  Du gibst dein Handy erst ab, wenn das Ersatzteil bereitliegt – oder wir holen es ab!
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="android-selector-box">
+          <h3 style="margin-bottom: 1rem; font-size: 1.2rem;"
+              data-de="Unverbindliche Preisanfrage & Reservierung"
+              data-es="Consultar Precio y Reserva (Sin Compromiso)">
+            Unverbindliche Preisanfrage & Reservierung
+          </h3>
+
+          <div class="form-group">
+            <label data-de="Marke wählen" data-es="Selecciona la Marca">Marke wählen</label>
+            <div class="pill-group" id="brandGroup">
+              <button class="pill-btn android-pill active" onclick="setBrand('Samsung Galaxy', this)">🌌 Samsung</button>
+              <button class="pill-btn android-pill" onclick="setBrand('Xiaomi', this)">🧡 Xiaomi</button>
+              <button class="pill-btn android-pill" onclick="setBrand('Redmi / POCO', this)">⚡ Redmi</button>
+              <button class="pill-btn android-pill" onclick="setBrand('Laptop / Otro', this)">💻 Otro / PC</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label data-de="Gewünschter Service-Modus" data-es="Modalidad que prefieres">Gewünschter Service-Modus</label>
+            <select id="pickupMode" onchange="updateAndroidWhatsApp()">
+              <option value="Abholservice (Pick-up in Berlin)" data-de="🚗 Abholservice (Handy abholen & bringen)" data-es="🚗 Recogida a domicilio en Berlín (Pick-up)">🚗 Abholservice (Handy abholen & bringen)</option>
+              <option value="Termin mit Teile-Reservierung" data-de="📅 Termin buchen (Ersatzteil vorab reservieren)" data-es="📅 Reservar pieza y traerlo con cita">📅 Termin buchen (Ersatzteil vorab reservieren)</option>
+            </select>
+          </div>
+
+          <div style="background: rgba(168, 85, 247, 0.12); border: 1px dashed rgba(168, 85, 247, 0.4); padding: 0.9rem; border-radius: 10px; margin-bottom: 1.2rem; text-align: center;">
+            <span style="font-size: 0.82rem; color: #d8b4fe; display: block;" data-de="PREIS & VERFÜGBARKEIT" data-es="PRECIO Y DISPONIBILIDAD">PREIS & VERFÜGBARKEIT</span>
+            <strong style="font-size: 1.35rem; color: #fff;" data-de="Auf Anfrage (Tagesaktuell)" data-es="A Consultar (Presupuesto Directo)">Auf Anfrage (Tagesaktuell)</strong>
+          </div>
+
+          <a id="waAndroidLink" href="#" target="_blank" class="btn-whatsapp" style="width: 100%; background: linear-gradient(90deg, #a855f7, #ec4899); color: #fff; border-color: rgba(168,85,247,0.5);">
+            📲 <span data-de="Preis & Reservierung per WhatsApp anfragen" data-es="Consultar Precio y Reserva por WhatsApp">Preis & Reservierung per WhatsApp anfragen</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 <strong>Tech Repair Berlin</strong> · iPhone Express Lab & Smartphone Service · Berlin</p>
+    </footer>
+  </div>
 
   <script>
-    // =========================================================================
-    // 1. ESCUDO ANTI-CLIC DERECHO, ANTI-DOBLE CLIC Y ANTI-COPIA
-    // =========================================================================
     let toastTimeout;
     function mostrarAvisoSeguridad() {
       const toast = document.getElementById('securityToast');
@@ -737,13 +756,11 @@
       toastTimeout = setTimeout(() => toast.classList.remove('show'), 2200);
     }
 
-    // Bloquear clic derecho
     document.addEventListener('contextmenu', function(e) {
       e.preventDefault();
       mostrarAvisoSeguridad();
     });
 
-    // Bloquear doble clic para seleccionar/copiar
     document.addEventListener('dblclick', function(e) {
       e.preventDefault();
       if (window.getSelection) {
@@ -752,7 +769,6 @@
       mostrarAvisoSeguridad();
     });
 
-    // Bloquear eventos de copiar/cortar y atajos de teclado (Ctrl+C, Ctrl+U, F12)
     document.addEventListener('copy', e => { e.preventDefault(); mostrarAvisoSeguridad(); });
     document.addEventListener('cut', e => { e.preventDefault(); mostrarAvisoSeguridad(); });
     document.addEventListener('keydown', function(e) {
@@ -766,22 +782,19 @@
       }
     });
 
-    // =========================================================================
-    // 2. OBJETO preciosDelModelo (EXCLUSIVO PARA IPHONE EXPRESS)
-    // =========================================================================
-    const WHATSAPP_NUMBER = "4915000000000"; // Pon aquí tu número con 49
+    const WHATSAPP_NUMBER = "4915000000000";
 
     const preciosDelModelo = {
-      "iPhone 16 Pro Max": { pantalla: { estandar: 229, original: 319 }, bateria: 99,  carga: 89, trasera: 129, placa: 169 },
-      "iPhone 16 Pro":     { pantalla: { estandar: 199, original: 279 }, bateria: 95,  carga: 85, trasera: 119, placa: 159 },
+      "iPhone 16 Pro Max": { pantalla: { estandar: 229, original: 319 }, bateria: 99, carga: 89, trasera: 129, placa: 169 },
+      "iPhone 16 Pro": { pantalla: { estandar: 199, original: 279 }, bateria: 95, carga: 85, trasera: 119, placa: 159 },
       "iPhone 16 / 16 Plus": { pantalla: { estandar: 169, original: 229 }, bateria: 89, carga: 79, trasera: 109, placa: 149 },
-      "iPhone 15 Pro Max": { pantalla: { estandar: 189, original: 259 }, bateria: 89,  carga: 79, trasera: 109, placa: 149 },
-      "iPhone 15 Pro":     { pantalla: { estandar: 169, original: 229 }, bateria: 85,  carga: 75, trasera: 99,  placa: 139 },
+      "iPhone 15 Pro Max": { pantalla: { estandar: 189, original: 259 }, bateria: 89, carga: 79, trasera: 109, placa: 149 },
+      "iPhone 15 Pro": { pantalla: { estandar: 169, original: 229 }, bateria: 85, carga: 75, trasera: 99, placa: 139 },
       "iPhone 15 / 15 Plus": { pantalla: { estandar: 139, original: 189 }, bateria: 79, carga: 69, trasera: 89, placa: 129 },
-      "iPhone 14 Pro Max": { pantalla: { estandar: 159, original: 219 }, bateria: 79,  carga: 69, trasera: 95,  placa: 129 },
-      "iPhone 14 Pro":     { pantalla: { estandar: 145, original: 195 }, bateria: 75,  carga: 65, trasera: 89,  placa: 119 },
+      "iPhone 14 Pro Max": { pantalla: { estandar: 159, original: 219 }, bateria: 79, carga: 69, trasera: 95, placa: 129 },
+      "iPhone 14 Pro": { pantalla: { estandar: 145, original: 195 }, bateria: 75, carga: 65, trasera: 89, placa: 119 },
       "iPhone 14 / 14 Plus": { pantalla: { estandar: 115, original: 155 }, bateria: 69, carga: 59, trasera: 79, placa: 109 },
-      "iPhone 13 Pro Max": { pantalla: { estandar: 129, original: 179 }, bateria: 69,  carga: 59, trasera: 85,  placa: 109 },
+      "iPhone 13 Pro Max": { pantalla: { estandar: 129, original: 179 }, bateria: 69, carga: 59, trasera: 85, placa: 109 },
       "iPhone 13 / 13 Pro / Mini": { pantalla: { estandar: 99, original: 139 }, bateria: 65, carga: 55, trasera: 75, placa: 99 },
       "iPhone 12 Serie (12 / Pro / Max)": { pantalla: { estandar: 85, original: 119 }, bateria: 59, carga: 49, trasera: 69, placa: 89 },
       "iPhone 11 / XR / XS / SE": { pantalla: { estandar: 69, original: 95 }, bateria: 49, carga: 45, trasera: 59, placa: 79 }
@@ -792,7 +805,6 @@
     let currentQuality = 'estandar';
     let currentAndroidBrand = 'Samsung Galaxy';
 
-    // Inicializar desplegable de modelos desde preciosDelModelo
     function cargarModelosIphone() {
       const select = document.getElementById('iphoneModelSelect');
       select.innerHTML = '';
@@ -809,8 +821,6 @@
       currentIssue = issue;
       document.querySelectorAll('#issueGroup .pill-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-
-      // Mostrar selector de calidad solo si es pantalla
       document.getElementById('qualityBox').style.display = (issue === 'pantalla') ? 'block' : 'none';
       calcularPrecioIphone();
     }
@@ -844,7 +854,6 @@
         timeEl.textContent = currentLang === 'de' ? '30 - 45 Min. (Sofort)' : '30 - 45 Min. (Al Instante)';
       }
 
-      // Actualizar enlace de WhatsApp para iPhone
       const nombresAveria = {
         de: { pantalla: `Display (${currentQuality === 'original' ? 'Original/OEM' : 'Premium'})`, bateria: 'Akku-Tausch', carga: 'Ladebuchse', trasera: 'Rückglas', placa: 'Platinenreparatur' },
         es: { pantalla: `Pantalla (${currentQuality === 'original' ? 'Original/OEM' : 'Premium'})`, bateria: 'Cambio de Batería', carga: 'Conector de Carga', trasera: 'Tapa Trasera', placa: 'Micro-soldadura Placa' }
@@ -857,7 +866,6 @@
       document.getElementById('waIphoneLink').href = `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
     }
 
-    // Lógica para Samsung, Xiaomi y Redmi (A consultar + Recogida/Reserva)
     function setBrand(brand, btn) {
       currentAndroidBrand = brand;
       document.querySelectorAll('#brandGroup .pill-btn').forEach(b => b.classList.remove('active'));
@@ -876,7 +884,6 @@
       document.getElementById('waAndroidLink').href = `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
     }
 
-    // Slider y Rayos X
     function moveSlider(val) {
       document.getElementById('brokenLayer').style.clipPath = `inset(0 ${100 - val}% 0 0)`;
       document.getElementById('sliderLine').style.left = `${val}%`;
@@ -887,7 +894,6 @@
       document.getElementById('xrayBtn').classList.toggle('active');
     }
 
-    // Cambio de Idioma DE / ES
     function setLang(lang) {
       currentLang = lang;
       document.getElementById('langDE').classList.toggle('active', lang === 'de');
@@ -901,7 +907,6 @@
       updateAndroidWhatsApp();
     }
 
-    // Iniciar
     cargarModelosIphone();
     updateAndroidWhatsApp();
   </script>
